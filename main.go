@@ -8,7 +8,10 @@ import (
 
 func main() {
 
-	c := colly.NewCollector()
+	c := colly.NewCollector(
+		colly.AllowedDomains("finance.yahoo.com"),
+		colly.MaxDepth(0),
+	)
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		link := e.Attr("href")
@@ -26,6 +29,6 @@ func main() {
 		fmt.Println("Request URL:", r.Request.URL, "failed with response:", r, "\nError:", err)
 	})
 
-	c.Visit("https://www.scrapingcourse.com/ecommerce/")
+	c.Visit("https://finance.yahoo.com/quote/TSLA/")
 
 }
