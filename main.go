@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/gocolly/colly"
 )
@@ -10,7 +11,7 @@ func main() {
 
 	c := colly.NewCollector(
 		colly.AllowedDomains("finance.yahoo.com"),
-		colly.MaxDepth(0),
+		colly.MaxDepth(1),
 	)
 
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
@@ -29,6 +30,11 @@ func main() {
 		fmt.Println("Request URL:", r.Request.URL, "failed with response:", r, "\nError:", err)
 	})
 
+	os.Args()
 	c.Visit("https://finance.yahoo.com/quote/TSLA/")
+
+}
+
+func select_ticker(ticker string) {
 
 }
