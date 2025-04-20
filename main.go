@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"os"
+	// "os"
 
 	"github.com/gocolly/colly"
 )
@@ -30,7 +30,7 @@ func main() {
 		fmt.Println("Request URL:", r.Request.URL, "failed with response:", r, "\nError:", err)
 	})
 
-	os.Args()
+	// os.Args()
 	c.Visit("https://finance.yahoo.com/quote/TSLA/")
 
 }
